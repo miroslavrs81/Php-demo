@@ -3,40 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Demo</title>
-  </head>
-<body>
-    <h1>Recommended Books</h1>
+</head>
 
+<body>
     <?php
         $books = [
-            "Do Androids Dream of Electric Sheep",
-            "The Langoliers",
-            "Hail Mary"
-        ]
+            [
+                'name' => 'Do Androids Dream of Electric Sheep',
+                'author' => 'Philip K. Dick',
+                'purchaseUrl' => 'http://example.com'
+            ],
+            [
+                'name' => 'Project Hail Mary',
+                'author' => 'Andy Weir',
+                'purchaseUrl' => 'http://example.com'
+            ]
+        ];
     ?>
-    
+
     <ul>
-        <?php foreach($books as $book) : ?>
-            <li><?= $book ?></li>
+        <?php foreach ($books as $book) : ?>
+            <li>
+                <a href="<?= $book['purchaseUrl'] ?>">
+                    <?= $book['name'] ?>
+                </a>
+            </li>
         <?php endforeach; ?>
     </ul>
-
-
-    <h1>Top Performing Users</h1>
-
-    <?php 
-        $users = [
-            "Stefan Jeftic",
-            "Micko Tomic",
-            "Miroslav Ilic"
-        ]
-    ?>
-
-    <ul>
-        <?php foreach($users as $user): ?>
-            <li><?= $user ?></li>
-        <?php endforeach; ?>
-        </ul>
-
 </body>
-</html>
+</html
