@@ -2,32 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Demo</title>
+    <title>Favorite movies</title>
 </head>
 
 <body>
     <?php
-        $books = [
+        $movies = [
             [
-                'name' => 'Do Androids Dream of Electric Sheep',
-                'author' => 'Philip K. Dick',
-                'releaseYear' => 1968,
-                'purchaseUrl' => 'http://example.com'
+                'name' => 'Braveheart',
+                'releaseYear' => 1995,
             ],
             [
-                'name' => 'Project Hail Mary',
-                'author' => 'Andy Weir',
-                'releaseYear' => 2021,
-                'purchaseUrl' => 'http://example.com'
-            ]
+                'name' => 'Guardians of the Galaxy Vol. 3',
+                'releaseYear' => 2023,
+            ],
+            [
+                'name' => '300',
+                'releaseYear' => 2006,
+            ],
+
         ];
+
+        function filterByYear($movies, $year)
+        {
+            $filteredMovies = [];
+
+            foreach ($movies as $movie){
+                if ($movie['releaseYear'] >= $year){
+                    $filteredMovies[] = $movie;
+                }
+            }
+
+            return $filteredMovies;
+        }
     ?>
 
-    <ul>
-        <?php foreach ($books as $book) : ?>
+<ul>
+        <?php foreach (filterByYear($movies, '2000') as $movie) : ?>
             <li>
-                <a href="<?= $book['purchaseUrl'] ?>">
-                    <?= $book['name'] ?>( <?= $book['releaseYear'] ?>)
+                <a href="<?= $movie['releaseYear'] ?>">
+                    <?= $movie['name'] ?> (<?= $movie['releaseYear'] ?>)
                 </a>
             </li>
         <?php endforeach; ?>
