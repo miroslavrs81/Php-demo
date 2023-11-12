@@ -1,32 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Demo</title>
-    <style>
-      body {    
-    display: grid;
-    place-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: sans-serif;
-      }
-</style>
-</head>
+  </head>
 <body>
-    <?php
-    $name = "Dark Matter";
-    $read = true;
+    <h1>Recommended Books</h1>
 
-    if ($read) {
-        $message = "You have read $name";
-    } else {
-        $message = "You have NOT read $name";
-    }
+    <?php
+        $books = [
+            "Do Androids Dream of Electric Sheep",
+            "The Langoliers",
+            "Hail Mary"
+        ]
     ?>
     
-<h1> 
-   <?= $message ?>
-</h1>
+    <ul>
+        <?php foreach($books as $book) : ?>
+            <li><?= $book ?></li>
+        <?php endforeach; ?>
+    </ul>
+
+
+    <h1>Top Performing Users</h1>
+
+    <?php 
+        $users = [
+            "Stefan Jeftic",
+            "Micko Tomic",
+            "Miroslav Ilic"
+        ]
+    ?>
+
+    <ul>
+        <?php foreach($users as $user): ?>
+            <li><?= $user ?></li>
+        <?php endforeach; ?>
+        </ul>
 
 </body>
 </html>
