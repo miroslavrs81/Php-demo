@@ -2,46 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Favorite movies</title>
+    <title>Demo</title>
 </head>
 
 <body>
     <?php
-        $movies = [
+        $books = [
             [
-                'name' => 'Braveheart',
-                'releaseYear' => 1995,
+                'name' => 'Do Androids Dream of Electric Sheep',
+                'author' => 'Philip K. Dick',
+                'releaseYear' => 1968,
+                'purchaseUrl' => 'http://example.com'
             ],
             [
-                'name' => 'Guardians of the Galaxy Vol. 3',
-                'releaseYear' => 2023,
+                'name' => 'Project Hail Mary',
+                'author' => 'Andy Weir',
+                'releaseYear' => 2021,
+                'purchaseUrl' => 'http://example.com'
             ],
             [
-                'name' => '300',
-                'releaseYear' => 2006,
-            ],
-
+                'name' => 'The Martian',
+                'author' => 'Andy Weir',
+                'releaseYear' => 2011,
+                'purchaseUrl' => 'http://example.com'
+            ]
         ];
 
-        function filterByYear($movies, $year)
-        {
-            $filteredMovies = [];
+        $filteredBooks = array_filter($books, function ($book) {
+            return $book['releaseYear'] >= 1950 && $book['releaseYear'] <= 2020;
+        });
+        ?>
 
-            foreach ($movies as $movie){
-                if ($movie['releaseYear'] >= $year){
-                    $filteredMovies[] = $movie;
-                }
-            }
-
-            return $filteredMovies;
-        }
-    ?>
-
-<ul>
-        <?php foreach (filterByYear($movies, '2000') as $movie) : ?>
+    <ul>
+        <?php foreach ($filteredBooks as $book) : ?>
             <li>
-                <a href="<?= $movie['releaseYear'] ?>">
-                    <?= $movie['name'] ?> (<?= $movie['releaseYear'] ?>)
+                <a href="<?= $book['purchaseUrl'] ?>">
+                    <?= $book['name'] ?> (<?= $book['releaseYear'] ?>) - By <?= $book['author'] ?>
                 </a>
             </li>
         <?php endforeach; ?>
